@@ -1,3 +1,4 @@
+const crypto = require('crypto')
 const fs = require('fs')
 const { default: generateKeyPair } = require('jose/util/generate_key_pair')
 const { default: generateSecret } = require('jose/util/generate_secret')
@@ -69,8 +70,19 @@ function writeToFile(filename, key) {
     })
 }
 
+/**
+ * 
+ * @param {string} pem filename of the PEM file 
+ * @param {string} type type of key stored in the PEM file ('private' or 'public')
+ */
+function convertPEMToKeyObject(pem, type) {
+    if (type == 'public') return crypto.createPublicKey(fs.readFileSync(pem))
+    if (type == 'private') return crypto.createPrivateKey(fs.readFileSync(pem))
+}
+
 module.exports = {
     generateJoseKeyPair,
     generateJoseSecret,
-    writeToFile
+    writeToFile,
+    convertPEMToKeyObject
 }
