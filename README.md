@@ -60,3 +60,19 @@ generateJoseSecret('HS256', hex=true).then(key => {
     writeToFile('secret.txt', key)
 })
 ```
+
+## Compatibility
+If you want to use PEM files for signing and verifying your JWT/JWE/JWS with JOSEv3, you can use the `convertPEMToKeyObject()` function to convert them to `KeyObject` type:
+
+```js
+const { convertPEMToKeyObject } = require('./generator')
+
+const jwt = {
+    private: convertPEMToKeyObject('private.pem', 'private'),
+    public: convertPEMToKeyObject('public.pem', 'public')
+}
+```
+Once converted, you can now use them with JOSEv3:
+```js
+const { payload, protectedHeader } = await jwtVerify(token, jwt.public)
+```
