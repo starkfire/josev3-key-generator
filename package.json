@@ -1,0 +1,22 @@
+{
+  "name": "josev3-key-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/starkfire/josev3-key-generator.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/starkfire/josev3-key-generator/issues"
+  },
+  "homepage": "https://github.com/starkfire/josev3-key-generator#readme",
+  "dependencies": {
+    "jose": "^3.5.1"
+  }
+}
